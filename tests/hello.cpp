@@ -4,6 +4,7 @@
  */
 
  #include <iostream>
+<<<<<<< HEAD
  using namespace std;
 
  int main () 
@@ -13,3 +14,12 @@
     return 0;
  }
  
+=======
+
+ int main () 
+ {
+    std::cout << "Hello, World!\n";
+
+    return 0;
+ }
+>>>>>>> Removed using namespace std
