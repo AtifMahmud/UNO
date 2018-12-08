@@ -4,17 +4,6 @@
  */
 
  #include <iostream>
-<<<<<<< HEAD
- using namespace std;
-
- int main () 
- {
-    cout << "Hello, World!\n";
-
-    return 0;
- }
- 
-=======
 
  int main () 
  {
@@ -22,4 +11,3 @@
 
     return 0;
  }
->>>>>>> Removed using namespace std
