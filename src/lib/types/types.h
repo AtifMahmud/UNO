@@ -1,3 +1,6 @@
+#ifndef TYPES_H
+#define TYPES_H
+
 #include <string>
 
 /**
@@ -37,3 +40,5 @@ typedef struct {
     cardType* next;
     cardType* prev;
 } stackNode;
+
+#endif

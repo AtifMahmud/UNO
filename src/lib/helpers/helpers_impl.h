@@ -1,3 +1,6 @@
+#ifndef HEADERS_IMPL_H
+#define HEADERS_IMPL_H
+
 #include <iostream>
 
 template <typename T>
@@ -7,3 +10,14 @@ void printVectorElements(std::vector<T> myVector)
         std::cout << "\n" << myVector[i] << " ";
     }
 }
+
+template<typename T>
+void swap(T a, T b) 
+{
+    T temp;
+    temp = a;
+    a = b;
+    b = temp;
+}
+
+#endif

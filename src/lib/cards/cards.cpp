@@ -6,22 +6,22 @@
 #include "cards.h"
 #include "../stack/stack.h"
 #include "../helpers/helpers.h"
+#include "../helpers/helpers_impl.h"
 #include <vector>
 #include <cstdlib>
 
 CardStack initDeck(int size, std::vector<cardType> &myCards)
 {
     shuffle(myCards);
-    CardStack* unoStack = new CardStack();
-    return *unoStack; 
+    CardStack unoStack;
+    return unoStack; 
 }
 
-void shuffle(std::vector <cardType> &myCards)
+template <typename T>
+void shuffle(std::vector <T> &cards)
 {   
-    int randomPos = rand() % myCards.size;
-    for (int i = 0; i < myCards.size; i++) {
-        swap(myCards[i], myCards[randomPos]);
+    int randomPos = rand() % cards.size();
+    for (int i = 0; i < cards.size(); i++) {
+        swap <T> (cards[i], cards[randomPos]);
     }
-
-
 }

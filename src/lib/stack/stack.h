@@ -1,3 +1,6 @@
+#ifndef STACK_H
+#define STACK_H
+
 class CardStack
 {   
     
@@ -8,4 +11,6 @@ class CardStack
 
         // Constructor (dummy for now)
         CardStack();
-};  
+};
+
+#endif

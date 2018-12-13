@@ -1,4 +1,6 @@
 #include "../lib/types/types.h"
+#include "../lib/cards/cards.h"
+#include "../lib/cards/cards_impl.h"
 #include "../lib/helpers/helpers.h"
 #include "../lib/helpers/helpers_impl.h"
 
@@ -40,6 +42,9 @@ void printVectorElementsTest()
     myVect.push_back(200);
     printVectorElements <int> (myVect);
     std::cout << "\n\n";
+    std::cout << "When shuffled, it is..\n\n";
+    shuffle <int> (myVect);
+    printVectorElements <int> (myVect);
 }
 
 void fooTest()
