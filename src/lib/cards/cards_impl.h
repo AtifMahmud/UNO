@@ -1,3 +1,6 @@
+#ifndef CARDS_IMPL_H
+#define CARDS_IMPL_H
+
 #include "cards.h"
 #include "../helpers/helpers.h"
 #include "../helpers/helpers_impl.h"
@@ -14,6 +17,8 @@ void shuffle(std::vector <T> &myVect)
         int randomPos = rand() % myVect.size();
         pos1 = i;
         pos2 = randomPos;
-        std::swap <int> (myVect[pos1], myVect[pos2]);
+        std::swap <T> (myVect[pos1], myVect[pos2]);
     }
 }
+
+#endif
