@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 
+
 template <typename T>
 void printVectorElements(std::vector<T> myVector)
 {
@@ -9,6 +10,7 @@ void printVectorElements(std::vector<T> myVector)
         std::cout << "\n" << myVector[i] << " ";
     }
 }
+
 
 void foo()
 {

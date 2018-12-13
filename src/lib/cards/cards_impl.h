@@ -5,15 +5,15 @@
 #include <cstdlib>
 
 template <typename T>
-void shuffle(std::vector <T> &myCards)
+void shuffle(std::vector <T> &myVect)
 {   
     int pos1 = 1;
     int pos2 = 2;
 
-    for (int i = 0; i < myCards.size(); i++) {
-        int randomPos = rand() % myCards.size();
+    for (int i = 0; i < myVect.size(); i++) {
+        int randomPos = rand() % myVect.size();
         pos1 = i;
         pos2 = randomPos;
-        std::swap <int> (myCards[pos1], myCards[pos2]);
+        std::swap <int> (myVect[pos1], myVect[pos2]);
     }
 }

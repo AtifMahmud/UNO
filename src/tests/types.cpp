@@ -37,12 +37,19 @@ void printVectorElementsTest()
 {   
     std::cout <<"\n\nPrint Vector Element Test";
     std::vector <int> myVect;
-    myVect.push_back(20);
-    myVect.push_back(25);
-    myVect.push_back(200);
+
+    for (int i = 0; i < 10; i++){
+        myVect.push_back(i);
+    }
+
     printVectorElements <int> (myVect);
     std::cout << "\n\n";
+
     std::cout << "When shuffled, it is...";
+    shuffle <int> (myVect);
+    printVectorElements <int> (myVect);
+
+    std::cout << "\n\nWhen shuffled again, it is...";
     shuffle <int> (myVect);
     printVectorElements <int> (myVect);
 }

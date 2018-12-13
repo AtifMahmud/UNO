@@ -3,14 +3,14 @@
 # target: dependencies
 # 	action
 
-typeTest: helpers.o types.o cards.o stack.o
-	g++ helpers.o types.o cards.o stack.o -o typeTest
+typeTest: helpers.o cards.o types.o stack.o
+	g++ helpers.o cards.o stack.o types.o -o typeTest
 
 helpers.o: src/lib/helpers/helpers.cpp
 	g++ -c src/lib/helpers/helpers.cpp
  
-types.o: src/tests/types.cpp
-	g++ -c src/tests/types.cpp
+types.o: src/lib/types/types.h
+	g++ -c src/lib/types/types.h
 
 cards.o: src/lib/cards/cards.cpp stack.o  
 	g++ -c src/lib/cards/cards.cpp 
