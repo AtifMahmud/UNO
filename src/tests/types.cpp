@@ -42,7 +42,7 @@ void printVectorElementsTest()
     myVect.push_back(200);
     printVectorElements <int> (myVect);
     std::cout << "\n\n";
-    std::cout << "When shuffled, it is..\n\n";
+    std::cout << "When shuffled, it is...";
     shuffle <int> (myVect);
     printVectorElements <int> (myVect);
 }

@@ -22,6 +22,6 @@ void shuffle(std::vector <T> &cards)
 {   
     int randomPos = rand() % cards.size();
     for (int i = 0; i < cards.size(); i++) {
-        swap <T> (cards[i], cards[randomPos]);
+        std::swap <T> (cards[i], cards[randomPos]);
     }
 }
