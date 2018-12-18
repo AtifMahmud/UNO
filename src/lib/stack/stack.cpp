@@ -1,3 +1,10 @@
 #include "stack.h"
+#include "../types/types.h"
+#include <vector>
 
-CardStack::CardStack() : size(0) { }
+// Default Constructor
+CardStack::CardStack() : cards({}) { };
+
+// Parametrized Constructor
+CardStack::CardStack(std::vector<cardType> myCards): cards(myCards) { };
+

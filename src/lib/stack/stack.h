@@ -8,16 +8,25 @@
  * 
  */
 
+#include <vector>
+#include "../types/types.h"
+
 class CardStack
 {   
     
     private:
-        int size;
+        std::vector <cardType> cards; 
 
     public:
 
         // Constructor (dummy for now)
         CardStack();
+
+        // Parameterized constructor
+        CardStack(std::vector <cardType> myCards); 
+
+        // Getter function 
+        std::vector <cardType> getCards();
 };
 
 #endif
