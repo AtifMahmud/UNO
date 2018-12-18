@@ -18,7 +18,9 @@ std::vector <CardClass> CardStack::getCards()
 // Pop function
 CardClass CardStack::pop()
 {
-    return (this->data.back());
+    CardClass card = (this->data.back());
+    (this->data).pop_back();
+    return card;
 }
 
 // Push function

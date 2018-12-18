@@ -14,6 +14,8 @@ std::vector <CardClass> initCardVector()
 {
     std::vector <CardClass> cardVector;
     
+    // UNO 
+    CardClass redZero; 
     
     return cardVector;
 

@@ -4,6 +4,7 @@
 #include "../lib/helpers/helpers.h"
 #include "../lib/helpers/helpers_impl.h"
 #include "../lib/cardClass/cardClass.h"
+#include "../lib/stack/stack.h"
 
 #include <iostream>
 #include <string>
@@ -12,6 +13,7 @@
 void printVectorElementsTest();
 void fooTest();
 void cardClassTest();
+void stackTest();
 
 int main () 
 {   
@@ -19,6 +21,7 @@ int main ()
     printVectorElementsTest();
     fooTest();
     cardClassTest();
+    stackTest();
     std::cout <<"\n\n\n";
     return 0;
 } 
@@ -59,4 +62,29 @@ void cardClassTest()
     std::string specialType = redZeroCard.getSymbol();
     std::cout <<"\n\n" <<"For redZero " << number << " " << colour << " " << specialType;
     std::cout << "\n\n\n";
+}
+
+void stackTest()
+{
+    std::cout << "Running stackTest\n\n";
+    CardClass redZeroCard = CardClass(0, "red", "none");
+    CardClass greenOneCard = CardClass(1, "green", "none");
+    CardClass blueEightCard = CardClass(8, "blue", "none");
+    CardClass reverseCard = CardClass(-1, "none", "reverse");
+    std::vector <CardClass> cards = {redZeroCard, greenOneCard, blueEightCard, reverseCard};
+    CardStack stack = CardStack(cards);
+    std::cout << "The vector has these cards\n";
+
+    for (int i = 0; i < cards.size(); i++){
+        cards[i].printAttributes();
+        std::cout << "\n";
+    }
+
+    std::cout << "Size is "; 
+    std::cout << stack.getSize() << "\n";
+    std::cout << "One pop: ";
+    (stack.pop()).printAttributes();
+    std::cout << "\n";
+    std::cout << "Size is now ";
+    std::cout << stack.getSize();
 }
