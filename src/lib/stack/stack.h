@@ -16,7 +16,7 @@ class CardStack
 {   
     
     private:
-        std::vector <CardClass> cards; 
+        std::vector <CardClass> data; 
 
     public:
 
@@ -28,6 +28,15 @@ class CardStack
 
         // Getter function 
         std::vector <CardClass> getCards();
+
+        // Pop function (removes the top element)
+        CardClass pop();
+
+        // Push function
+        CardClass push(CardClass card);
+
+        // Get size
+        int getSize();
 };
 
 #endif

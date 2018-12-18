@@ -4,7 +4,30 @@
 #include <vector>
 
 // Default Constructor
-CardStack::CardStack() : cards({}) { };
+CardStack::CardStack() : data({}) { };
 
 // Parametrized Constructor
-CardStack::CardStack(std::vector<CardClass> myCards): cards(myCards) { };
+CardStack::CardStack(std::vector<CardClass> myCards): data(myCards) { };
+
+// Getter function
+std::vector <CardClass> CardStack::getCards()
+{
+    return this->data;
+}
+
+// Pop function
+CardClass CardStack::pop()
+{
+    return (this->data.back());
+}
+
+// Push function
+CardClass CardStack::push(CardClass card)
+{
+    (this->data).push_back(card);
+}
+
+// Get size
+int CardStack::getSize(){
+    return (this->data.size());
+}
