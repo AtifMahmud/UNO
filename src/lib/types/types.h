@@ -10,29 +10,7 @@
 
 
 #include <string>
-
-/**
- * Type: cardType 
- * Purpose: A data type defining a standard UNO card
- * Author: Atif Mahmud
- * 
- * @colour: A string specifying which colour suite the card belongs to 
- *              - "none" if specialType
- * 
- * @specialType: A string specifying what type of special card this is (special => not a numbered card)
- *              - "none" if not a specialType
- *
- * @cardNum: An integer specifying the number of the card if it is numbered
- *              - -1 if not numbered
- *  
- */
-
-typedef struct {
-    std::string colour; 
-    std::string specialType;
-    int cardNum;
-} cardType; 
-
+#include "../cardClass/cardClass.h"
 
 /**
  * Type: stackNode
@@ -50,9 +28,9 @@ typedef struct {
  */ 
 
 typedef struct {
-    cardType card;  
-    cardType* next;
-    cardType* prev;
+    CardClass card;  
+    CardClass* next;
+    CardClass* prev;
 } stackNode;
 
 #endif

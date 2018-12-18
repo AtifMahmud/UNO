@@ -9,7 +9,6 @@
 #include <string>
 #include <vector>
 
-void testCardTest();
 void printVectorElementsTest();
 void fooTest();
 void cardClassTest();
@@ -17,24 +16,12 @@ void cardClassTest();
 int main () 
 {   
     std::cout << "Running Type Tests\n\n\n";
-    testCardTest();
     printVectorElementsTest();
     fooTest();
     cardClassTest();
     std::cout <<"\n\n\n";
     return 0;
 } 
-
-
-void testCardTest()
-{
-    cardType testCard;
-    testCard.colour = "red";
-    testCard.specialType = "none";
-    testCard.cardNum = 2;
-    std::cout << "\n\nTest Card Test\n" ;
-    std::cout << "Test card " << testCard.colour << " " << testCard.specialType << " " << testCard.cardNum << " \n\n";
-}
 
 void printVectorElementsTest()
 {   
@@ -69,7 +56,7 @@ void cardClassTest()
     CardClass redZeroCard = CardClass(0, "red", "none");
     int number = redZeroCard.getNumber();
     std::string colour = redZeroCard.getColour();
-    std::string specialType = redZeroCard.getSpecialType();
+    std::string specialType = redZeroCard.getSymbol();
     std::cout <<"\n\n" <<"For redZero " << number << " " << colour << " " << specialType;
     std::cout << "\n\n\n";
 }

@@ -9,12 +9,13 @@
 #include "../stack/stack.h"
 #include "../helpers/helpers.h"
 #include "../helpers/helpers_impl.h"
+#include "../cardClass/cardClass.h"
 #include <vector>
 #include <cstdlib>
 
-CardStack initDeck(int size, std::vector<cardType> &myCards)
+CardStack initDeck(int size, std::vector<CardClass> &myCards)
 {
-    shuffle <cardType> (myCards);
+    shuffle <CardClass> (myCards);
     CardStack unoStack;
     return unoStack; 
 }

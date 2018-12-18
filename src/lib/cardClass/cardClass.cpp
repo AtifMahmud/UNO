@@ -9,12 +9,12 @@
 #include <string>
 #include <iostream>
 
-CardClass::CardClass(): number(), colour(), specialType() {};
+CardClass::CardClass(): number(), colour(), symbol() {};
 
-CardClass::CardClass(int number, std::string colour, std::string specialType):
+CardClass::CardClass(int number, std::string colour, std::string symbol):
     number(number),
     colour(colour),
-    specialType(specialType){};
+    symbol(symbol){};
 
 int CardClass::getNumber()
 {
@@ -26,14 +26,14 @@ std::string CardClass::getColour()
     return this->colour;
 }
 
-std::string CardClass::getSpecialType()
+std::string CardClass::getSymbol()
 {
-    return this->specialType;
+    return this->symbol;
 }
 
-bool CardClass::isSpecialType()
+bool CardClass::isSymbol()
 {
-    return (this->specialType != "none");
+    return (this->symbol != "none");
 }
 
 bool CardClass::isRed()
@@ -58,5 +58,5 @@ bool CardClass::isYellow()
 
 void CardClass::printAttributes()
 {
-    std::cout << this->number << " " << this->colour << " " << this->specialType;
+    std::cout << this->number << " " << this->colour << " " << this->symbol;
 }

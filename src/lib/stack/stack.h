@@ -10,12 +10,13 @@
 
 #include <vector>
 #include "../types/types.h"
+#include "../cardClass/cardClass.h"
 
 class CardStack
 {   
     
     private:
-        std::vector <cardType> cards; 
+        std::vector <CardClass> cards; 
 
     public:
 
@@ -23,10 +24,10 @@ class CardStack
         CardStack();
 
         // Parameterized constructor
-        CardStack(std::vector <cardType> myCards); 
+        CardStack(std::vector <CardClass> myCards); 
 
         // Getter function 
-        std::vector <cardType> getCards();
+        std::vector <CardClass> getCards();
 };
 
 #endif

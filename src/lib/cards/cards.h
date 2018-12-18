@@ -10,6 +10,7 @@
 
 #include "../types/types.h"
 #include "../stack/stack.h"
+#include "../cardClass/cardClass.h"
 #include <vector>
 
 /**
@@ -30,11 +31,11 @@ void shuffle (std::vector <T> &myVect);
  * Author: Atif Mahmud
  * 
  * @param size: The size of the deck of cards
- * @param myCards: A vector containing the cardTypes to include
+ * @param myCards: A vector containing the CardClass objects to include
  * @returns: An instance of the CardStack class
  * 
  */
 
-CardStack initDeck(int size, std::vector <cardType> &myCards);
+CardStack initDeck(int size, std::vector <CardClass> &myCards);
 
 #endif

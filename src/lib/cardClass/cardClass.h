@@ -19,8 +19,8 @@
  * @colour: A string specifying which colour suite the card belongs to 
  *              - "none" if specialType
  * 
- * @specialType: A string specifying what type of special card this is (special => not a numbered card)
- *              - "none" if not a specialType
+ * @symbol: A string specifying what type of symbol card this is (symbol => not a numbered card)
+ *              - "none" if not a symbol
  *
  *  
  */
@@ -30,7 +30,7 @@ class CardClass {
     private:
         int number;
         std::string colour;
-        std::string specialType;
+        std::string symbol;
 
     public:
 
@@ -38,15 +38,15 @@ class CardClass {
         CardClass();
 
         // Parameterized constructor
-        CardClass(int number, std::string colour, std::string specialType);
+        CardClass(int number, std::string colour, std::string symbol);
 
         // Getter functions
         int getNumber();
         std::string getColour();
-        std::string getSpecialType();
+        std::string getSymbol();
 
         // Card checks
-        bool isSpecialType();
+        bool isSymbol();
         bool isRed();
         bool isGreen();
         bool isBlue();
