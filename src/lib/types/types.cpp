@@ -1,17 +1,12 @@
 #include "types.h"
+#include "../cardClass/cardClass.h"
 #include <string>
 
-typedef struct {
-    std::string colour; 
-    std::string specialType;
-    int cardNum;
-} cardType; 
-
 
 typedef struct {
-    cardType card;  
-    cardType* next;
-    cardType* prev;
+    CardClass card;  
+    CardClass* next;
+    CardClass* prev;
 } stackNode;
 
 
