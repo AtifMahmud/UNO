@@ -1,4 +1,3 @@
-#include "../lib/types/types.h"
 #include "../lib/cards/cards.h"
 #include "../lib/cards/cards_impl.h"
 #include "../lib/helpers/helpers.h"
@@ -18,10 +17,12 @@ void stackTest();
 int main () 
 {   
     std::cout << "Running Type Tests\n\n\n";
+
     printVectorElementsTest();
     fooTest();
     cardClassTest();
     stackTest();
+    
     std::cout <<"\n\n\n";
     return 0;
 } 

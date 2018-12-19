@@ -9,7 +9,6 @@
  */
 
 #include <vector>
-#include "../types/types.h"
 #include "../cardClass/cardClass.h"
 
 class CardStack
