@@ -18,4 +18,10 @@ void playGame();
 int main () 
 {
     std::cout << "Welcome to UNO!\n\n";
+    std::vector <CardClass> unoCards = initUnoVector();
+    
+    for (int i = 0; i < unoCards.size(); i++){
+        unoCards[i].printAttributes();
+        std::cout << "\n";
+    }
 }

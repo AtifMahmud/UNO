@@ -3,8 +3,8 @@
 # target: dependencies
 # 	action
 
-game.exe: helpers.o cards.o game.o stack.o cardClass.o
-	g++ helpers.o cards.o stack.o game.o cardClass.o -o game.exe
+game.exe: helpers.o cards.o game.o stack.o cardClass.o uno.o
+	g++ helpers.o cards.o stack.o game.o cardClass.o uno.o -o game.exe
 
 game.o: src/game/game.cpp
 	g++ -c src/game/game.cpp
@@ -24,8 +24,11 @@ alltests.o: src/tests/alltests.cpp
 stack.o: src/lib/stack/stack.cpp
 	g++ -c src/lib/stack/stack.cpp 
 
-cardClass.o: src/lib/cardClass/cardClass.o
+cardClass.o: src/lib/cardClass/cardClass.cpp
 	g++ -c src/lib/cardClass/cardClass.cpp
+
+uno.o: src/lib/uno/uno.cpp
+	g++ -c src/lib/uno/uno.cpp
 
 clean:
 	rm -f *.o 
