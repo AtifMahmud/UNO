@@ -28,6 +28,7 @@
 class CardClass {
 
     private:
+        std::string name;
         int number;
         std::string colour;
         std::string symbol;
