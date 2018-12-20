@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <cstdlib>
 
 void printVectorElementsTest();
 void fooTest();
@@ -94,13 +95,18 @@ void stackTest()
 }
 
 void shuffleTest() 
-{
+{   
+    srand(time(NULL));
     std::cout << "\n\nRunning shuffle test\n\n";
     std::vector <int> test = {1,2,3,4,5};
     printVectorElements(test);
-    std::cout << "Shuffling...\n";
-    std::random_shuffle(test.begin(), test.end());
-    std::cout << "After shuffling\n";
+    std::cout << "\nShuffling...\n";
+
+    for (int i = 0; i < rand() % 100; i++) {
+        std::random_shuffle(test.begin(), test.end());
+    }
+
+    std::cout << "After shuffling";
     printVectorElements(test);
     std::cout <<"\n\n";
 }
