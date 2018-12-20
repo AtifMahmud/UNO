@@ -11,10 +11,13 @@
 #include "../lib/uno/uno.h"
 #include "../lib/cardClass/cardClass.h"
 #include "../lib/stack/stack.h"
+#include "../lib/player/player.h"
+#include "../lib/cards/cards.h"
 #include "game.h"
 
 #define MIN_PLAYERS 3
 #define MAX_PLAYERS 7
+#define STARTING_CARDS_PER_PLAYER 7
 
 bool gameEnd = false;
 int numPlayers;
@@ -49,5 +52,18 @@ void getNumPlayers()
 
 void playGame(std::vector <CardClass> myCards, int numPlayers)
 {
+    std::vector <Player> players;
+    shuffle <CardClass> (myCards);
 
-}
+    for (int i = 0; i < numPlayers; i++) {
+        players.push_back(Player(i));
+    }
+
+    for (int i = 0; i < STARTING_CARDS_PER_PLAYER; i++) {
+        for (int j = 0; j < players.size(); j++)
+        {   
+            CardClass card = myCards.back();
+            players[j].addToCards(card);
+        }
+    }   
+}   

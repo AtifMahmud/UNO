@@ -4,6 +4,8 @@
 
 Player::Player(): idNum(0) {};
 
+Player::Player(int idNum): idNum(idNum) {};
+
 Player::Player(int idNum, std::vector <CardClass> cards): 
     idNum(idNum),
     cards(cards) {};

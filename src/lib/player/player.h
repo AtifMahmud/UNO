@@ -12,7 +12,8 @@ class Player {
         // default constructor
         Player();
 
-        // Parameterized constructor
+        // Parameterized constructors
+        Player(int idNum);
         Player(int idNum, std::vector <CardClass> cards);
 
         // Getter
