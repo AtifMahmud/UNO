@@ -29,7 +29,7 @@ int main ()
     getNumPlayers();    
     std::cout << "Setting up for game for " << numPlayers << " players. You are player 1\n\n";
     std::vector <CardClass> unoCards = initUnoVector();
-    
+    playGame(unoCards, numPlayers);
 
 }
 
@@ -66,4 +66,9 @@ void playGame(std::vector <CardClass> myCards, int numPlayers)
             players[j].addToCards(card);
         }
     }   
+
+    std::vector <CardClass> cards = players[0].getCards();
+    for (int i = 0; i < cards.size(); i++) {
+        cards[i].printAttributes();
+    }
 }   
