@@ -198,6 +198,8 @@ std::vector <CardClass> initUnoVector()
             blueSix2,
             blueSeven1,
             blueSeven2,
+            blueEight1,
+            blueEight2,
             blueNine1,
             blueNine2,
 
