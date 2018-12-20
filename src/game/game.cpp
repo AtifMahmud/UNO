@@ -14,6 +14,7 @@
 #include "../lib/player/player.h"
 #include "../lib/cards/cards.h"
 #include "game.h"
+#include <cstdlib>
 
 #define MIN_PLAYERS 3
 #define MAX_PLAYERS 7
@@ -51,10 +52,14 @@ void getNumPlayers()
 
 
 void playGame(std::vector <CardClass> myCards, int numPlayers)
-{
+{   
     std::vector <Player> players;
-    shuffle <CardClass> (myCards);
+    srand(time(NULL));
 
+    for (int i = 0; i < rand() % 20000; i++){
+        shuffle <CardClass> (myCards);
+    }
+    
     for (int i = 0; i < numPlayers; i++) {
         players.push_back(Player(i));
     }
@@ -63,6 +68,7 @@ void playGame(std::vector <CardClass> myCards, int numPlayers)
         for (int j = 0; j < players.size(); j++)
         {   
             CardClass card = myCards.back();
+            myCards.pop_back();
             players[j].addToCards(card);
         }
     }   
@@ -70,5 +76,6 @@ void playGame(std::vector <CardClass> myCards, int numPlayers)
     std::vector <CardClass> cards = players[0].getCards();
     for (int i = 0; i < cards.size(); i++) {
         cards[i].printAttributes();
+        std::cout << "\n";
     }
 }   

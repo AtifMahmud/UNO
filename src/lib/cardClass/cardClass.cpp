@@ -58,5 +58,5 @@ bool CardClass::isYellow()
 
 void CardClass::printAttributes()
 {
-    std::cout << this->number << " " << this->colour << " " << this->symbol;
+    std::cout << this->number << " " << this->colour << " " << this->symbol << " ";
 }
