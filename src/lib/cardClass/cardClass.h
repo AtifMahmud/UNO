@@ -13,6 +13,8 @@
 /**
  * Author: Atif Mahmud
  * 
+ * @name: A string indicating the name of the class instance
+ * 
  * @number: An integer specifying the number of the card if it is numbered
  *              - -1 if not numbered
  * 
@@ -39,7 +41,7 @@ class CardClass {
         CardClass();
 
         // Parameterized constructor
-        CardClass(int number, std::string colour, std::string symbol);
+        CardClass(std::string name, int number, std::string colour, std::string symbol);
 
         // Getter functions
         int getNumber();
@@ -53,8 +55,9 @@ class CardClass {
         bool isBlue();
         bool isYellow();
 
-        // Print method to help inspect the class instance
+        // Print methods to help inspect the class instance
         void printAttributes();
+        void printName();
 
 };
 

@@ -11,7 +11,8 @@
 
 CardClass::CardClass(): number(), colour(), symbol() {};
 
-CardClass::CardClass(int number, std::string colour, std::string symbol):
+CardClass::CardClass(std::string name, int number, std::string colour, std::string symbol):
+    name(name),
     number(number),
     colour(colour),
     symbol(symbol){};
@@ -59,4 +60,9 @@ bool CardClass::isYellow()
 void CardClass::printAttributes()
 {
     std::cout << this->number << " " << this->colour << " " << this->symbol << " ";
+}
+
+void CardClass::printName()
+{
+    std::cout << this->name << " ";
 }

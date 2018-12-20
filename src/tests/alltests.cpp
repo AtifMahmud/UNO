@@ -61,7 +61,7 @@ void fooTest()
 void cardClassTest()
 {   
     std::cout << "Running cardClassTest\n\n";
-    CardClass redZeroCard = CardClass(0, "red", "none");
+    CardClass redZeroCard = CardClass("redZero", 0, "red", "none");
     int number = redZeroCard.getNumber();
     std::string colour = redZeroCard.getColour();
     std::string specialType = redZeroCard.getSymbol();
@@ -72,10 +72,10 @@ void cardClassTest()
 void stackTest()
 {
     std::cout << "Running stackTest\n\n";
-    CardClass redZeroCard = CardClass(0, "red", "none");
-    CardClass greenOneCard = CardClass(1, "green", "none");
-    CardClass blueEightCard = CardClass(8, "blue", "none");
-    CardClass reverseCard = CardClass(-1, "none", "reverse");
+    CardClass redZeroCard = CardClass("redZero", 0, "red", "none");
+    CardClass greenOneCard = CardClass("greenOne", 1, "green", "none");
+    CardClass blueEightCard = CardClass("bluEight", 8, "blue", "none");
+    CardClass reverseCard = CardClass("reverse", -1, "none", "reverse");
     std::vector <CardClass> cards = {redZeroCard, greenOneCard, blueEightCard, reverseCard};
     CardStack stack = CardStack(cards);
     std::cout << "The vector has these cards\n";

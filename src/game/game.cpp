@@ -75,7 +75,7 @@ void playGame(std::vector <CardClass> myCards, int numPlayers)
 
     std::vector <CardClass> cards = players[0].getCards();
     for (int i = 0; i < cards.size(); i++) {
-        cards[i].printAttributes();
+        cards[i].printName();
         std::cout << "\n";
     }
 }   
