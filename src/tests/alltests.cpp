@@ -8,11 +8,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 void printVectorElementsTest();
 void fooTest();
 void cardClassTest();
 void stackTest();
+void shuffleTest();
 
 int main () 
 {   
@@ -22,7 +24,8 @@ int main ()
     fooTest();
     cardClassTest();
     stackTest();
-    
+    shuffleTest();
+
     std::cout <<"\n\n\n";
     return 0;
 } 
@@ -88,4 +91,16 @@ void stackTest()
     std::cout << "\n";
     std::cout << "Size is now ";
     std::cout << stack.getSize();
+}
+
+void shuffleTest() 
+{
+    std::cout << "\n\nRunning shuffle test\n\n";
+    std::vector <int> test = {1,2,3,4,5};
+    printVectorElements(test);
+    std::cout << "Shuffling...\n";
+    std::random_shuffle(test.begin(), test.end());
+    std::cout << "After shuffling\n";
+    printVectorElements(test);
+    std::cout <<"\n\n";
 }
