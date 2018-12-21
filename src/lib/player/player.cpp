@@ -1,5 +1,6 @@
 #include "player.h"
 #include <vector>
+#include <iostream>
 #include "../cardClass/cardClass.h"
 
 Player::Player(): idNum(0) {};
@@ -30,3 +31,12 @@ void Player::removeElement(int index)
     (this->cards).erase(cards.begin() + index);
 }
 
+void Player::printAllCards()
+{
+    std::vector<CardClass> cards = this->getCards();
+    
+    for (int i = 0; i < cards.size(); i++){
+        cards[i].printName();
+        std::cout <<"\n";
+    }
+}

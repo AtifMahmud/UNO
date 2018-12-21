@@ -23,4 +23,7 @@ class Player {
         // Modifiers
         void addToCards(CardClass card);
         void removeElement(int index);
+
+        // Print methods
+        void printAllCards();
 };
