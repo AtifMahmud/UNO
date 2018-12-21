@@ -4,5 +4,11 @@
 void getNumPlayers();
 void showWelcomeMessage();
 void setUpAndPlay();
-void playGame(std::vector <CardClass> myCards, int numPlayers);
+void setUpGame();
+void shuffleCards();
+void enrolPlayers();
+void dealCards();
+void displayCards();
+void initDiscardPile();
+
 

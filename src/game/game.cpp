@@ -22,13 +22,15 @@
 
 bool gameEnd = false;
 int numPlayers;
-
+std::vector <CardClass> unoCards;
+CardStack discardPile;
+std::vector <Player> players;
 
 int main () 
-{
+{   
     showWelcomeMessage();
     getNumPlayers();    
-    setUpAndPlay();
+    setUpGame();
 }
 
 
@@ -57,84 +59,71 @@ void showWelcomeMessage()
     std::cout << "Welcome to UNO implemented by Atif Mahmud in C++\n\n";
 }
 
-void setUpAndPlay()
-{
-    std::cout << "Setting up for game for " << numPlayers << " players. You are player 1\n\n";
-    std::vector <CardClass> unoCards = initUnoVector();
-    playGame(unoCards, numPlayers);
+void setUpGame()
+{  
+    std::cout << "Setting up for game for " << numPlayers << " players...\n\n";
+    unoCards = initUnoVector();
+    unoCards = initUnoVector();
+    shuffleCards();
+    enrolPlayers();
+    dealCards();
+    displayCards();
+    initDiscardPile();
+    
 }
 
-void playGame(std::vector <CardClass> myCards, int numPlayers)
-{   
-    std::vector <Player> players;
-    CardClass topCard;
-    srand(time(NULL));
 
-    // Shuffle
+void shuffleCards()
+{
+    srand(time(NULL));
     for (int i = 0; i < rand() % 20000; i++){
-        shuffle <CardClass> (myCards);
+        shuffle <CardClass> (unoCards);
     }
-    
-    // Add players to the player list
+}
+
+void enrolPlayers()
+{
     for (int i = 0; i < numPlayers; i++) {
         players.push_back(Player(i));
     }
+}
 
-    // Deal 7 cards each
+void dealCards()
+{
     for (int i = 0; i < STARTING_CARDS_PER_PLAYER; i++) {
         for (int j = 0; j < players.size(); j++)
         {   
-            CardClass card = myCards.back();
-            myCards.pop_back();
+            CardClass card = unoCards.back();
+            unoCards.pop_back();
             players[j].addToCards(card);
         }
-    }   
+    } 
+}
 
-    // Display cards: need to put in game loop
-    for (int i = 0; i < players.size(); i++){
-        std::cout << "Hello player " << i << ". ";
-        std::cout << "Your cards are as follows: \n\n";
+void displayCards()
+{
+    for (int i = 0; i < players.size(); i++) {
+        std::cout << "Player " << i + 1 << ": Your cards are as follows\n";
         players[i].printAllCards();
         std::cout << "\n\n";
     }
+}
 
-    // Initialize discard pile
+void initDiscardPile() {
+
+    CardClass topCard;
+
     do {
-        topCard= {myCards.back()};
-        shuffle(myCards);
+        topCard= {unoCards.back()};
+        shuffle(unoCards);
     } while (topCard.isSymbol() == true);
 
+    unoCards.pop_back();
     std::vector <CardClass> discardVector = {topCard};
-    CardStack discardPile = CardStack(discardVector);
+    discardPile = CardStack(discardVector);
 
-    // Game Loop
     std::cout << "The top card is ";
     discardPile.peek().printName();
     std::cout << "\n\n";
 
-    std::vector <CardClass> player1 = topCard.getPlayableCards(players[0].getCards());
-    std::vector <CardClass> player2 = topCard.getPlayableCards(players[1].getCards());
-    std::vector <CardClass> player3 = topCard.getPlayableCards(players[2].getCards());
-
-    std::cout << "For player1, the playable cards are ";
-    for (int i = 0; i < player1.size(); i++) {
-        player1[i].printName();
-        std::cout << "\n";
-    }
-
-    std::cout << "\n\n";
-    
-    std::cout << "For player2, the playable cards are ";
-    for (int i = 0; i < player2.size(); i++) {
-        player2[i].printName();
-        std::cout << "\n";
-    }
-
-    std::cout << "\n\n";
-
-    std::cout << "For player3, the playable cards are ";
-    for (int i = 0; i < player3.size(); i++) {
-        player3[i].printName();
-        std::cout << "\n";
-    }
-}   
+}
