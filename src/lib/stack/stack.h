@@ -36,6 +36,9 @@ class CardStack
 
         // Get size
         int getSize();
+
+        // View the top card
+        CardClass peek();
 };
 
 #endif

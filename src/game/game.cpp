@@ -59,7 +59,7 @@ void showWelcomeMessage()
 
 void setUpAndPlay()
 {
-     std::cout << "Setting up for game for " << numPlayers << " players. You are player 1\n\n";
+    std::cout << "Setting up for game for " << numPlayers << " players. You are player 1\n\n";
     std::vector <CardClass> unoCards = initUnoVector();
     playGame(unoCards, numPlayers);
 }
@@ -67,6 +67,7 @@ void setUpAndPlay()
 void playGame(std::vector <CardClass> myCards, int numPlayers)
 {   
     std::vector <Player> players;
+    CardClass topCard;
     srand(time(NULL));
 
     // Shuffle
@@ -89,11 +90,51 @@ void playGame(std::vector <CardClass> myCards, int numPlayers)
         }
     }   
 
+    // Display cards: need to put in game loop
     for (int i = 0; i < players.size(); i++){
         std::cout << "Hello player " << i << ". ";
         std::cout << "Your cards are as follows: \n\n";
         players[i].printAllCards();
         std::cout << "\n\n";
     }
+
+    // Initialize discard pile
+    do {
+        topCard= {myCards.back()};
+        shuffle(myCards);
+    } while (topCard.isSymbol() == true);
+
+    std::vector <CardClass> discardVector = {topCard};
+    CardStack discardPile = CardStack(discardVector);
+
+    // Game Loop
+    std::cout << "The top card is ";
+    discardPile.peek().printName();
+    std::cout << "\n\n";
+
+    std::vector <CardClass> player1 = topCard.getPlayableCards(players[0].getCards());
+    std::vector <CardClass> player2 = topCard.getPlayableCards(players[1].getCards());
+    std::vector <CardClass> player3 = topCard.getPlayableCards(players[2].getCards());
+
+    std::cout << "For player1, the playable cards are ";
+    for (int i = 0; i < player1.size(); i++) {
+        player1[i].printName();
+        std::cout << "\n";
+    }
+
+    std::cout << "\n\n";
     
+    std::cout << "For player2, the playable cards are ";
+    for (int i = 0; i < player2.size(); i++) {
+        player2[i].printName();
+        std::cout << "\n";
+    }
+
+    std::cout << "\n\n";
+
+    std::cout << "For player3, the playable cards are ";
+    for (int i = 0; i < player3.size(); i++) {
+        player3[i].printName();
+        std::cout << "\n";
+    }
 }   

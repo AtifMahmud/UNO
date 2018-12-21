@@ -66,3 +66,18 @@ void CardClass::printName()
 {
     std::cout << this->name << " ";
 }
+
+std::vector <CardClass> CardClass::getPlayableCards(std::vector <CardClass> playerCards)
+{
+    std::vector <CardClass> playableCards;
+    for (int i = 0; i < playerCards.size(); i++) {
+
+        if (playerCards[i].getColour() == this->getColour() ||
+            playerCards[i].getNumber() == this->getNumber() ||
+            playerCards[i].isSymbol()){
+                playableCards.push_back(playerCards[i]);
+            }
+    }
+
+    return playableCards;
+}

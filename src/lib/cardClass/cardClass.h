@@ -9,6 +9,7 @@
  */ 
 
 #include <string>
+#include <vector>
 
 /**
  * Author: Atif Mahmud
@@ -58,6 +59,9 @@ class CardClass {
         // Print methods to help inspect the class instance
         void printAttributes();
         void printName();
+
+        // Gameplay method
+        std::vector <CardClass> getPlayableCards(std::vector <CardClass> playerCards);
 
 };
 

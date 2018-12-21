@@ -29,6 +29,12 @@ CardClass CardStack::push(CardClass card)
 }
 
 // Get size
-int CardStack::getSize(){
+int CardStack::getSize()
+{
     return (this->data.size());
+}
+
+CardClass CardStack::peek()
+{
+    return (this->data).back();
 }
