@@ -32,6 +32,11 @@ std::string CardClass::getSymbol()
     return this->symbol;
 }
 
+std::string CardClass::getName()
+{
+    return this->name;
+}
+
 bool CardClass::isSymbol()
 {
     return (this->symbol != "none");

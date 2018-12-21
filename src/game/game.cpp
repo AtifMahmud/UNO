@@ -68,8 +68,13 @@ void setUpGame()
     enrolPlayers();
     dealCards();
     displayCards();
-    initDiscardPile();
-    
+    initDiscardPile(); 
+
+    //while (gameEnd) {
+        for (int i = 0; i < players.size(); i++) {
+            playTurn(players[i]);
+        }
+    //}
 }
 
 
@@ -125,5 +130,18 @@ void initDiscardPile() {
     std::cout << "The top card is ";
     discardPile.peek().printName();
     std::cout << "\n\n";
+}
 
+void playTurn(Player player) 
+{
+    std::vector <CardClass> playableCards = discardPile.peek().getPlayableCards(player.getCards());
+    std::cout << "Top card is " << discardPile.peek().getName();
+    std::cout << "\nPlayer " << player.getIdNum() << ". Your playable cards are: \n";
+
+    for (int i = 0; i < playableCards.size(); i++) {
+        playableCards[i].printName();
+        std::cout << "\n";
+    }
+
+    std::cout << "\n\n";
 }

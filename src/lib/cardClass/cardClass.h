@@ -48,6 +48,7 @@ class CardClass {
         int getNumber();
         std::string getColour();
         std::string getSymbol();
+        std::string getName();
 
         // Card checks
         bool isSymbol();
