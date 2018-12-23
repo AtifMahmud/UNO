@@ -70,11 +70,11 @@ void setUpGame()
     displayCards();
     initDiscardPile(); 
 
-    //while (gameEnd) {
+    while (!gameEnd) {
         for (int i = 0; i < players.size(); i++) {
             playTurn(players[i]);
         }
-    //}
+    }
 }
 
 
@@ -133,15 +133,38 @@ void initDiscardPile() {
 }
 
 void playTurn(Player player) 
-{
+{   
+    int cardToPlay;
     std::vector <CardClass> playableCards = discardPile.peek().getPlayableCards(player.getCards());
-    std::cout << "Top card is " << discardPile.peek().getName();
-    std::cout << "\nPlayer " << player.getIdNum() << ". Your playable cards are: \n";
+    std::cout << "Player " << player.getIdNum() + 1 << " it's your turn!\n";
+    std::cout << "Your cards are\n";
+    player.printAllCards();
+    std::cout  << "\n";
+    std::cout << "Top card is " << discardPile.peek().getName() << "\n";
+    std::cout << "Your playable cards are (use -1 to pass): \n";
 
     for (int i = 0; i < playableCards.size(); i++) {
+        std::cout << i+1 << ".";
         playableCards[i].printName();
         std::cout << "\n";
+    } 
+    
+    do {
+        std::cout << "Enter number of card you want to play:";
+        std::cin >> cardToPlay;
+        std::cout << "\n";
+
+        if (cardToPlay < -1 || cardToPlay > playableCards.size()) {
+            std::cout << "Invalid option\n";
+        }
+    } while (cardToPlay < -1 || cardToPlay > playableCards.size());
+
+    if (cardToPlay != -1) {
+        CardClass newCard = playableCards[cardToPlay - 1];
+        std::cout << "\nPlaying " << newCard.getName() << "...";
+        std::cout << "\n\n";
+        player.removeElement(newCard);
+        discardPile.push(playableCards[cardToPlay - 1]);
     }
 
-    std::cout << "\n\n";
 }
