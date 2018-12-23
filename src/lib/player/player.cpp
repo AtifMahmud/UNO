@@ -35,7 +35,8 @@ void Player::removeElement(CardClass card)
 {
     for (int i = 0; i < this->cards.size(); i++) {
         if (cards[i].getName() == card.getName()){
-            (this->cards).erase(cards.begin() + i);
+            (this->cards).erase(cards.begin() + i + 1);
+            std::cout << "\n\n##### REMOVING " << cards[i].getName() << " ##########\n\n";
             break;
         }
     }

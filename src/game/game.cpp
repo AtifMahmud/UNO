@@ -144,7 +144,7 @@ void playTurn(Player player)
     std::cout << "Your playable cards are (use -1 to pass): \n";
 
     for (int i = 0; i < playableCards.size(); i++) {
-        std::cout << i+1 << ".";
+        std::cout << i + 1 << ".";
         playableCards[i].printName();
         std::cout << "\n";
     } 
@@ -164,7 +164,7 @@ void playTurn(Player player)
         std::cout << "\nPlaying " << newCard.getName() << "...";
         std::cout << "\n\n";
         player.removeElement(newCard);
-        discardPile.push(playableCards[cardToPlay - 1]);
+        discardPile.push(newCard);
     }
 
 }
