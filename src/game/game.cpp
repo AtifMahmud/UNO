@@ -132,7 +132,7 @@ void initDiscardPile() {
     std::cout << "\n\n";
 }
 
-void playTurn(Player player) 
+void playTurn(Player &player) 
 {   
     int cardToPlay;
     std::vector <CardClass> playableCards = discardPile.peek().getPlayableCards(player.getCards());
@@ -157,14 +157,15 @@ void playTurn(Player player)
         if (cardToPlay < -1 || cardToPlay > playableCards.size()) {
             std::cout << "Invalid option\n";
         }
-    } while (cardToPlay < -1 || cardToPlay > playableCards.size());
 
-    if (cardToPlay != -1) {
-        CardClass newCard = playableCards[cardToPlay - 1];
-        std::cout << "\nPlaying " << newCard.getName() << "...";
-        std::cout << "\n\n";
-        player.removeElement(newCard);
-        discardPile.push(newCard);
-    }
+        if (cardToPlay != -1) {
+            CardClass newCard = playableCards[cardToPlay - 1];
+            std::cout << "\nPlaying " << newCard.getName() << "...";
+            std::cout << "\n\n";
+            player.removeElement(newCard);
+            discardPile.push(newCard);
+        }
+
+    } while (cardToPlay < -1 || cardToPlay > playableCards.size());
 
 }

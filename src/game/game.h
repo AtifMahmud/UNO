@@ -11,6 +11,6 @@ void enrolPlayers();
 void dealCards();
 void displayCards();
 void initDiscardPile();
-void playTurn(Player player);
+void playTurn(Player &player);
 
 

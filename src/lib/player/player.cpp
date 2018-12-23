@@ -26,7 +26,7 @@ void Player::addToCards(CardClass card)
     (this->cards).push_back(card);
 }
 
-void Player::removeElement(int index)
+void Player::removeElement(int index) 
 {
     (this->cards).erase(cards.begin() + index);
 }
@@ -36,7 +36,6 @@ void Player::removeElement(CardClass card)
     for (int i = 0; i < this->cards.size(); i++) {
         if (cards[i].getName() == card.getName()){
             (this->cards).erase(cards.begin() + i + 1);
-            std::cout << "\n\n##### REMOVING " << cards[i].getName() << " ##########\n\n";
             break;
         }
     }
@@ -44,10 +43,8 @@ void Player::removeElement(CardClass card)
 
 void Player::printAllCards()
 {
-    std::vector<CardClass> cards = this->getCards();
-    
-    for (int i = 0; i < cards.size(); i++){
-        cards[i].printName();
+    for (int i = 0; i < this->cards.size(); i++){
+        this->cards[i].printName();
         std::cout <<"\n";
     }
 }
