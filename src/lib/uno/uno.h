@@ -11,7 +11,8 @@
 #include "../cardClass/cardClass.h"
 #include <vector>
 
-std::vector <CardClass> initCardVector();
+std::vector <CardClass> initUnoVector();
+
 
 
 #endif

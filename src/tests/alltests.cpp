@@ -1,4 +1,3 @@
-#include "../lib/types/types.h"
 #include "../lib/cards/cards.h"
 #include "../lib/cards/cards_impl.h"
 #include "../lib/helpers/helpers.h"
@@ -9,19 +8,25 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <cstdlib>
 
 void printVectorElementsTest();
 void fooTest();
 void cardClassTest();
 void stackTest();
+void shuffleTest();
 
 int main () 
 {   
     std::cout << "Running Type Tests\n\n\n";
+
     printVectorElementsTest();
     fooTest();
     cardClassTest();
     stackTest();
+    shuffleTest();
+
     std::cout <<"\n\n\n";
     return 0;
 } 
@@ -56,7 +61,7 @@ void fooTest()
 void cardClassTest()
 {   
     std::cout << "Running cardClassTest\n\n";
-    CardClass redZeroCard = CardClass(0, "red", "none");
+    CardClass redZeroCard = CardClass("redZero", 0, "red", "none");
     int number = redZeroCard.getNumber();
     std::string colour = redZeroCard.getColour();
     std::string specialType = redZeroCard.getSymbol();
@@ -67,10 +72,10 @@ void cardClassTest()
 void stackTest()
 {
     std::cout << "Running stackTest\n\n";
-    CardClass redZeroCard = CardClass(0, "red", "none");
-    CardClass greenOneCard = CardClass(1, "green", "none");
-    CardClass blueEightCard = CardClass(8, "blue", "none");
-    CardClass reverseCard = CardClass(-1, "none", "reverse");
+    CardClass redZeroCard = CardClass("redZero", 0, "red", "none");
+    CardClass greenOneCard = CardClass("greenOne", 1, "green", "none");
+    CardClass blueEightCard = CardClass("bluEight", 8, "blue", "none");
+    CardClass reverseCard = CardClass("reverse", -1, "none", "reverse");
     std::vector <CardClass> cards = {redZeroCard, greenOneCard, blueEightCard, reverseCard};
     CardStack stack = CardStack(cards);
     std::cout << "The vector has these cards\n";
@@ -87,4 +92,21 @@ void stackTest()
     std::cout << "\n";
     std::cout << "Size is now ";
     std::cout << stack.getSize();
+}
+
+void shuffleTest() 
+{   
+    srand(time(NULL));
+    std::cout << "\n\nRunning shuffle test\n\n";
+    std::vector <int> test = {1,2,3,4,5};
+    printVectorElements(test);
+    std::cout << "\nShuffling...\n";
+
+    for (int i = 0; i < rand() % 100; i++) {
+        std::random_shuffle(test.begin(), test.end());
+    }
+
+    std::cout << "After shuffling";
+    printVectorElements(test);
+    std::cout <<"\n\n";
 }

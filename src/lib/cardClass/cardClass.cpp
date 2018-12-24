@@ -11,7 +11,8 @@
 
 CardClass::CardClass(): number(), colour(), symbol() {};
 
-CardClass::CardClass(int number, std::string colour, std::string symbol):
+CardClass::CardClass(std::string name, int number, std::string colour, std::string symbol):
+    name(name),
     number(number),
     colour(colour),
     symbol(symbol){};
@@ -29,6 +30,11 @@ std::string CardClass::getColour()
 std::string CardClass::getSymbol()
 {
     return this->symbol;
+}
+
+std::string CardClass::getName()
+{
+    return this->name;
 }
 
 bool CardClass::isSymbol()
@@ -58,5 +64,26 @@ bool CardClass::isYellow()
 
 void CardClass::printAttributes()
 {
-    std::cout << this->number << " " << this->colour << " " << this->symbol;
+    std::cout << this->number << " " << this->colour << " " << this->symbol << " ";
 }
+
+void CardClass::printName()
+{
+    std::cout << this->name << " ";
+}
+
+std::vector <CardClass> CardClass::getPlayableCards(std::vector <CardClass> playerCards)
+{
+    std::vector <CardClass> playableCards;
+    for (int i = 0; i < playerCards.size(); i++) {
+
+        if (playerCards[i].getColour() == this->getColour() ||
+            playerCards[i].getNumber() == this->getNumber() ||
+            playerCards[i].isSymbol()){
+                playableCards.push_back(playerCards[i]);
+            }
+    }
+
+    return playableCards;
+}
+

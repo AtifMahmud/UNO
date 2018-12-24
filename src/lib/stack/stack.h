@@ -9,7 +9,6 @@
  */
 
 #include <vector>
-#include "../types/types.h"
 #include "../cardClass/cardClass.h"
 
 class CardStack
@@ -37,6 +36,9 @@ class CardStack
 
         // Get size
         int getSize();
+
+        // View the top card
+        CardClass peek();
 };
 
 #endif
