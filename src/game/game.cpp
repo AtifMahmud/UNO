@@ -25,6 +25,11 @@ int numPlayers;
 std::vector <CardClass> unoCards;
 CardStack discardPile;
 std::vector <Player> players;
+char wildCard = 'X';
+
+
+
+
 
 int main () 
 {   
@@ -32,6 +37,8 @@ int main ()
     getNumPlayers();    
     setUpGame();
 }
+
+
 
 
 
@@ -48,6 +55,10 @@ void getNumPlayers()
     } while (numPlayers < MIN_PLAYERS || numPlayers > MAX_PLAYERS);
 }
 
+
+
+
+
 void showWelcomeMessage()
 {
     std::cout << "           ###############################\n";
@@ -58,6 +69,10 @@ void showWelcomeMessage()
     std::cout << "           ###############################\n";
     std::cout << "Welcome to UNO implemented by Atif Mahmud in C++\n\n";
 }
+
+
+
+
 
 void setUpGame()
 {  
@@ -78,6 +93,9 @@ void setUpGame()
 }
 
 
+
+
+
 void shuffleCards()
 {
     srand(time(NULL));
@@ -86,12 +104,20 @@ void shuffleCards()
     }
 }
 
+
+
+
+
 void enrolPlayers()
 {
     for (int i = 0; i < numPlayers; i++) {
         players.push_back(Player(i));
     }
 }
+
+
+
+
 
 void dealCards()
 {
@@ -105,6 +131,11 @@ void dealCards()
     } 
 }
 
+
+
+
+
+
 void displayCards()
 {
     for (int i = 0; i < players.size(); i++) {
@@ -113,6 +144,11 @@ void displayCards()
         std::cout << "\n\n";
     }
 }
+
+
+
+
+
 
 void initDiscardPile() {
 
@@ -132,16 +168,44 @@ void initDiscardPile() {
     std::cout << "\n\n";
 }
 
+
+
+
+
+
 void playTurn(Player &player) 
 {   
     int cardToPlay;
-    std::vector <CardClass> playableCards = discardPile.peek().getPlayableCards(player.getCards());
+    std::vector <CardClass> playableCards;
+
+
+    if (wildCard == 'X') {
+        playableCards = discardPile.peek().getPlayableCards(player.getCards());
+    } else if (wildCard == 'R') {
+        std::cout << "\nNew Wild! Colour has been chosen to RED!\n\n";
+        playableCards = CardClass("wild", -1, "red", "none").getPlayableCards(player.getCards());
+        wildCard = 'X';
+    } else if (wildCard == 'G') {
+        std::cout << "\nNew Wild! Colour has been chosen to GREEN!\n\n";
+        playableCards = CardClass("wild", -1, "green", "none").getPlayableCards(player.getCards());
+        wildCard = 'X';
+    } else if (wildCard == 'B') {
+        std::cout << "\nNew Wild! Colour has been chosen to BLUE!\n\n";
+        playableCards = CardClass("wild", -1, "blue", "none").getPlayableCards(player.getCards());
+        wildCard = 'X';
+    } else if (wildCard == 'Y') {
+        std::cout << "\nNew Wild! Colour has been chosen to YELLOW!\n\n";
+        playableCards = CardClass("wild", -1, "yellow", "none").getPlayableCards(player.getCards());
+        wildCard = 'X';
+    } 
+
+
     std::cout << "Player " << player.getIdNum() + 1 << " it's your turn!\n";
     std::cout << "Your cards are\n";
     player.printAllCards();
     std::cout  << "\n";
     std::cout << "Top card is " << discardPile.peek().getName() << "\n";
-    std::cout << "Your playable cards are (use -1 to pass): \n";
+    std::cout << "Your playable cards are (use 0 to pass): \n";
 
     for (int i = 0; i < playableCards.size(); i++) {
         std::cout << i + 1 << ".";
@@ -154,18 +218,38 @@ void playTurn(Player &player)
         std::cin >> cardToPlay;
         std::cout << "\n";
 
-        if (cardToPlay < -1 || cardToPlay > playableCards.size()) {
+        if (cardToPlay < 0 || cardToPlay > playableCards.size()) {
             std::cout << "Invalid option\n";
         }
+    
+    } while (cardToPlay < 0 || cardToPlay > playableCards.size());
 
-        if (cardToPlay != -1) {
-            CardClass newCard = playableCards[cardToPlay - 1];
-            std::cout << "\nPlaying " << newCard.getName() << "...";
-            std::cout << "\n\n";
-            player.removeElement(newCard);
-            discardPile.push(newCard);
+
+    if (cardToPlay != 0) {
+        CardClass newCard = playableCards[cardToPlay - 1];
+        std::cout << "\nPlaying " << newCard.getName() << "...";
+        std::cout << "\n\n";
+        player.removeElement(newCard);
+
+        if (newCard.getName() == "wild" || newCard.getName() == "drawFour") {
+           
+            do {
+                std::cout << "Please choose new colour. Type R for red, G for green, B for blue, and Y for yellow:";
+                std::cin >> wildCard;
+
+                if (wildCard != 'R' && wildCard != 'G' && wildCard != 'B' && wildCard != 'Y') {
+                    std::cout << "\nInvalid option\n";
+                }
+
+
+            } while (wildCard != 'R' && wildCard != 'G' && wildCard != 'B' && wildCard != 'Y');
         }
 
-    } while (cardToPlay < -1 || cardToPlay > playableCards.size());
+        if (player.getCards().size() == 0) {
+            std::cout  << "CONGRATS PLAYER " << player.getIdNum() + 1 << "! YOU WIN THIS ROUND!!! \n\n";
+        }
 
+        discardPile.push(newCard);
+
+        }
 }

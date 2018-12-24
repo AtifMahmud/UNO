@@ -86,3 +86,4 @@ std::vector <CardClass> CardClass::getPlayableCards(std::vector <CardClass> play
 
     return playableCards;
 }
+
