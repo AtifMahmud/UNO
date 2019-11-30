@@ -12,6 +12,8 @@
 #include <vector>
 #include <cstdlib>
 
+
+/* This is a useless comment */
 CardStack initDeck(int size, std::vector<CardClass> &myCards)
 {
     shuffle <CardClass> (myCards);
